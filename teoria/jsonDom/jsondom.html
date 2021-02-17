@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <title>Asincronia javaScript</title>
+    <style>
+       :root{
+           --yellow-color:#F7DF1E;
+           --dark-color:#222;
+       }
+       .card{
+           display: inline-block;
+           background-color: var(--dark-color);
+           color: var(--yellow-color);
+       } 
+       .cards{
+           border:this solid var(--dark-color);
+           padding: 1rem;
+       }
+       .card figcaption{
+           padding: 1rem;
+       }
+       .rotate-45{
+           transform: rotate(45deg);
+       }
+       .rotate-135{
+           transform: rotate(135deg);
+       }
+       .opacity-80{
+           opacity:.8;
+       }
+       .sepia{
+           filter: sepia(1);
+       }
+       .eventos-flujo div{
+           padding: 2rem;
+           font-size: 2rem;
+           text-align: center;
+       }
+       .uno{
+           background-color: yellow;
+       }
+       .dos{
+           background-color: gold;
+       }
+       .tres{
+           background-color: lightyellow;
+       }
+    </style>
+</head>
+
+
+<body>
+    <h1>WEB APIs</h1>
+    <h2>DOM:Document Object Model</h2>
+    <h2>BOM :Browser Object Model</h2>
+    <h2>CSSOM: CSS Object Model</h2>
+    <h2>WEB APIs</h2>
+     <ul>
+        <li>Eventos</li>
+        <li>Forms</li>
+        <li>AJAX-Fetch</li>
+        <li>History</li>
+        <li>Web Storage</li>
+        <li>Geolocation</li>
+        <li>Drag & Drop</li>
+        <li>Indexed DB</li>
+        <li>Canvas</li>
+        <li>MatchMedia</li>
+        <li>etc</li>
+     </ul>
+     <br>
+     <hr>
+     <br>
+     <h3>Manejo del DOM</h3>
+     <P id="que-es"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non bibendum augue. Quisque scelerisque,
+          magna id dapibus imperdiet, ex lorem vulputate urna, eget scelerisque lectus nisl ut leo.</P>
+    <nav id="menu">
+        <ul>
+            <li><a href="">Sección 1</a></li>
+            <li><a href="">Sección 2</a></li>
+            <li><a href="">Sección 3</a></li>
+            <li><a href="">Sección 4</a></li>
+            <li><a href="">Sección 5</a></li>
+        </ul>
+    </nav>
+    <input type="text" name="nombre" placeholder="Nombre">
+    <a class="link-dom" href="jsondom.html" style="background-color: greenyellow; color: #222;" 
+    data-id="1" data-description="Document Object Model">DOM</a>
+
+<section class="cards">
+   <figure class="card"> 
+     <img src="https://placeimg.com/200/200/tech" alt="Tech">
+     <figcaption>Tech</figcaption>
+   </figure>
+   <figure class="card"> 
+    <img src="https://placeimg.com/200/200/animals" alt="Animals">
+    <figcaption>Animals</figcaption>
+  </figure>
+  <figure class="card"> 
+    <img src="https://placeimg.com/200/200/people" alt="People">
+    <figcaption>People</figcaption>
+  </figure>
+  <figure class="card"> 
+    <img src="https://placeimg.com/200/200/nature" alt="Nature">
+    <figcaption>Nature</figcaption>
+  </figure>
+  <figure class="card"> 
+    <img src="https://placeimg.com/200/200/arch" alt="Arch">
+    <figcaption>Arch</figcaption>
+  </figure>
+</section>
+<template id="template-card">
+   <figure class="card">
+       <img>
+     <figcaption></figcaption>  
+   </figure>  
+</template>
+<h3>Manejadores de eventos</h3>
+<h4>Manejadores de eventos</h4>
+
+<button onclick="holaMundo()">Evento con atributo HTML</button>
+<br><br>
+<button id="evento-semantico">Evento con manejador semantico</button>
+<br><br>
+<button id="evento-multiple">Evento con manejador multiple</button>
+<br><br>
+<button id="evento-remover">Removiendo eventos con manejador multiple</button>
+<br>
+<br>
+<br>
+<h4>Manejadores de eventos</h4>
+<section class="eventos-flujo">
+    <div class="uno">
+        1
+        <div class="dos">
+            2
+            <div class="tres">
+                3
+                <a href="https://www.youtube.com/watch?v=ekzHIouo8Q4" target="_blank",rel="noopener">You tube</a>
+            </div>
+        </div>
+    </div>
+</section>
+<h3 style="width: 2000px;">Manejo del BOOM</h3>
+<button id="abrir-ventana">Abrir ventana</button>
+<br><br>
+<button id="cerrar-ventana">Cerrar ventana</button>
+<br><br>
+<button id="imprimir-ventana">Imprimir ventana</button>
+
+<script src="dom.js">
+
+
+ //JSON JSON.PARSE
+/* const json= {
+    cadena: "json",
+    numero: 35,
+    booleano:true, 
+    arreglo: ["correr", "programar","cocinar",],
+    objeto:{
+        twiter:"@levis",
+        email:"email@levis"
+    },
+    nulo:null
+}
+
+console.log(json);
+
+console.log(JSON);
+console.log("[1,2,3,4,5]");
+//aca ya lo detecta como un objeto. 
+console.log(JSON.parse("[1,2,3,4,5]"));
+console.log(JSON.parse("null"));
+//en las dos siguientes sale error porque no es un formato valido para convertir 
+          //console.log(JSON.parse("hola mundo"));
+          //console.log(JSON.parse("undefined"));
+
+//JSON.STRINGIGY
+//lo convierte a una cadena de texto.
+console.log(JSON.stringify([1,2,3]));
+//aca queda convertido a notacion json
+console.log(JSON.stringify({x:2,y:3}));
+console.log(JSON.stringify(json));
+ */
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

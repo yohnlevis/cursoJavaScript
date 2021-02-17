@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <title>Asincronia javaScript</title>
+</head>
+<body> 
+
+<script>
+
+//TIPOS DE DATO SYMBOL
+
+/* 
+let id= Symbol("hola");
+let id2= Symbol("hola"); 
+console.log(id===id2);
+console.log(id,id2);
+console.log(typeof(id), typeof(id2)); 
+          
+         //Adicionar symbol a un objeto
+      //como es una constante se declara en mayus y el tipo de dato Symbol no se le puede declarar con el constructor, osea con el New   
+const NOMBRE= Symbol("nombre");
+const SALUDAR= Symbol("saludar");
+
+
+const persona= {
+    //levis seria el identificador privado del symbol
+   [NOMBRE]: "levis"
+};
+
+
+console.log(persona);
+
+persona.NOMBRE= "Yohnnncitoo"; 
+console.log(persona);
+console.log(persona.NOMBRE);
+//con este me da el valor del symbol
+console.log(persona[NOMBRE]);
+
+//asi le adiciono un metodo con un symbol a un objeto. 
+persona[SALUDAR] = function() {
+    console.log("hola");
+}
+ console.log(persona);
+ persona[SALUDAR]();
+
+for (let propiedad in persona){
+    console.log(propiedad);
+    console.log(persona[propiedad]);
+}
+
+//para listar todos los atributos privados del objeto. 
+console.log(Object.getOwnPropertySymbols(persona)); */
+
+//TIPO DE DATO SET funciona como un arreglo pero no lo es 
+
+/* const set = new Set([1,2,3,4,5,6,6,6,true,false,true]);
+console.log(set);
+console.log(set.size); 
+//aca puedo adicionar y elimiar datos
+set.add("hola");
+set.add(9);
+set.delete(2);
+//para validar si un dato existe dentro de la colecion
+console.log(  `Si el elemento esta en el let devuelve true de lo contrario false   "${set.has("hola")}"`);
+
+console.log(set.size);
+console.log("Recorriendo con for of");
+for(item of set){
+    console.log(item); 
+
+}
+console.log("Recorriendo con forEach");
+ set.forEach(item=> console.log(item)); 
+ //Con esta opcion de Array.from se pasa del objeto let a array para utilizarlo como un arreglo. 
+let arr= Array.from(set);
+console.log(arr)
+//y ya puedo acceder a cada posicion para ver sus datos
+console.log(arr[0]);
+//para limpiar todo el let
+//Se hace con variable.clear() */
+
+//TIPO DE DATO MAP funciona como un set pero permite cualquier llave. 
+
+/* const mapa= new Map();
+mapa.set("nombre","Yohn"); 
+mapa.set("Apellido","Tabares");
+mapa.set("edad",32)
+
+console.log(mapa);
+console.log(mapa.size);
+//para saber si existen llaves con dichos nombres
+console.log(mapa.has("correo"));
+console.log(mapa.has("nombre"));
+//Para saber el valor de una llave
+console.log(mapa.get("nombre"));
+//Para editar el valor de un atributo 
+mapa.set("nombre","levisitoooo");
+console.log(mapa); 
+mapa.delete("apellido"); 
+console.log(mapa)
+//permite tener como llave cualquier cosa y hay que tener cuidado con esto ya se peude confundir al momento de entender el codigo 
+ mapa.set(true,true);
+ mapa.set(23,34); 
+
+for (let [key, value] of mapa){
+     console.log(`Llave : ${key} Valor: ${value}`)
+ }
+//otra forma de declarar un map
+ const mapa2= new Map([
+     ["nombre","Samuel"], 
+     ["edad",4],
+     [34,21]
+ ]); 
+
+ console.log(mapa2); */
+
+
+
+ //ITERABLES E ITERADORES
+  
+ /* const iterable =[1,2,3,4,5,6];
+ const iterador = iterable[Symbol.iterator]();
+
+ console.log(iterable);
+ console.log(iterador); */
+ /* console.log(iterador.next());
+ console.log(iterador.next());
+ console.log(iterador.next());
+ console.log(iterador.next());
+ console.log(iterador.next());
+ console.log(iterador.next());
+ console.log(iterador.next()); */
+
+//otra forma de hacerlo es con un ciclo
+/* let next = iterador.next();
+
+while (!next.done){
+    console.log(next.value); 
+    next= iterador.next();
+} */
+
+//GENERATORS permite volver el codigo de una funcion iterable y el codigo de uns funcion en iterador
+ //Si lleva un * es porque es un generador, queda una funcion iterable 
+/* function* iterable(){
+    //es como un retorno
+    yield "hola";
+    console.log("Hola uno");
+    yield "hola2";
+    console.log("Hola dos");
+    yield "hola3";
+    console.log("Hola tres");
+}
+
+let iterador= iterable();
+console.log(iterador.next());
+console.log(iterador.next());
+console.log(iterador.next());
+console.log(iterador.next());
+console.log(iterador.next());
+//para guardar en un arreglo la funcion generadora 
+
+const arr= [...iterable()];
+console.log(arr); */
+
+
+//PROXIES al crer un objeto o instancia hace una vinvulacion 
+
+
+/* const persona= {
+    nombre: "",
+    apellido:"",
+    edad:0
+}
+
+const manejador = {
+  set(obj,prop,valor){
+//aca colocamos esta condicional para que no permita adicionar llaves a una intancia
+//sin qu estas esten en el objeto, si deseo ver como funciona lo de adicionar 
+//llaves o atributos a una instancia y que afecte la clase, quito este if 
+if (Object.keys(obj).indexOf(prop)===-1){
+    return console.error(`La propiedad ${prop} no existe en el objeto persona`)
+}
+if((prop==="nombre" || prop==="apellido") && !(/^[A-Za-z\s]+$/g.test(valor))){
+    return console.warn(`La propiedad ${prop} solo acepta letras o espacios en blaco`)
+}
+      obj[prop]= valor;
+  }
+}
+
+
+const jon = new Proxy(persona,manejador);
+jon.nombre= "john",
+jon.apellido= "Tabares",
+jon.edad= 32, 
+//aca adiciono otra llave a la instancia pero debo descomentar el if del manejador
+//jon.email= "hola@gmail.com"
+
+
+console.log(jon);
+//Se puede ver que a la clase persona tambien lo afecta
+console.log(persona); */
+
+
+//PROPIEDAD DINAMICA DE LOS OBJETOS para adicionar propiedades en masivo a los objetos, para llenar arreglos
+/* let aleatorio= Math.round(Math.random()*100+5);
+const objUsuarios= {
+    propiedad:"valor",
+    [`id_${aleatorio}`]: "Valor aleatorio"
+
+}
+
+const usuarios= ["John","Levis","Samuel","Yova"]; 
+
+usuarios.forEach((usuario,index)=> objUsuarios[`id_${index}`]= usuario)
+console.log(objUsuarios); */
+
+//EL THIS
+/* console.log(this);
+console.log(window); 
+console.log(this===window); 
+
+this.nombre= "Contexto global";
+console.log(this.nombre);
+
+
+function imprimir(){
+  console.log(this.nombre) ;
+}
+
+imprimir();
+const obj= {
+    nombre:"Contexto objeto",
+    imprimir: function(){
+        console.log(this.nombre);
+    }
+}
+//al mandar a imprimir desde la funcion que esta en el objeto obj imprime contexto objeto 
+
+obj.imprimir();
+
+
+const obj2 = {
+    nombre: "Contexto objeto 2",
+    //este imprimir hace referencia al imprimir que esta en el contexto global linea 229
+    //y se puede declarar asi o completo imprimir:imprimir
+    imprimir
+}
+//Uno pensaria que aca deberia imprimir contexto global, pero imprime lo que esta
+//en el obj 2 
+obj2.imprimir();
+
+const obj3={
+    nombre: "Contexto objeto 3", 
+    imprimir: () =>{
+        console.log(this.nombre);
+    }
+}
+//Aca uno pensaria que imprime contexto objeto 3, por el comportamiento del obj2 pero 
+//imprime contexto globay ya que las arrow function manejan el contexto global y no
+//por bloques. Se debe tenet cuidado con esto. 
+obj3.imprimir();
+
+function persona (nombre){
+    this.nombre= nombre
+   // return console.log(this.nombre);
+   //aca devuelve el contexto global porque aca no tiene declarado el nombre
+  // return function(){
+  //  console.log(this.nombre,22222);
+ //  }
+
+ //Y para solucionar esto y que devuelva del contexto jon, ahora si se utiliza una 
+ //arrow function 
+ return ()=>console.log(this.nombre,88);
+}
+let jon = new persona("jon");
+  
+jon();
+ */
+
+//METODOS CALL, APLY, BIND si deseo conservar la referencia de algun
+//objeto dentro de un contexto
+
+console.log(this); 
+ this.lugar= "Contexto global";
+ function saludar(saludo,aquien){
+     console.log(`${saludo} ${aquien} estas en  ${this.lugar}`);
+ }
+
+saludar();
+
+const obj= {
+    lugar: "Contexto objeto"
+}
+//aca si imprime el contexto global 
+saludar();
+//si deseo el contexto del obj se utiliza la palabra call y si deso le envio parametros. 
+saludar.call(obj, "Hola","Yohn");
+
+
+// el metodo bind
+const persona= {
+    nombre:"Jon",
+    saludar: function(){
+        console.log(`Hola ${this.nombre}`)
+    }
+}
+
+persona.saludar();
+
+const otraPersona = {
+    //con el metodo bind se puede enlazar el contexto que se requiera 
+    saludar:persona.saludar.bind(persona)
+}
+
+otraPersona.saludar();
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

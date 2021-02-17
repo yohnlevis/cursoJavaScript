@@ -1,0 +1,74 @@
+html{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+/* a todos los elementos generados antes y despues del html, le aplicamos la 
+propiedad box-sizing para que las cajas se ajusten al ancho maximo */
+*,
+*:before, 
+*:after{
+    box-sizing: inherit;
+}
+body{
+    margin: 0;
+    /* se le da como minima altura el 100% del view */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* con esto le decimos a las imagenes que no desborden el documento. */ 
+img{
+  max-width: 100%;
+  height: auto;
+}
+/* para que baje el texto de pie de pagina */
+main{
+    flex-grow: 1;
+}
+/* se le aplica  un poco de padding a la cabecera */
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1890px;
+}
+.header{
+    padding: 0rem;
+    background-color: antiquewhite;
+}
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img{
+   width: 5rem;
+   height: auto; 
+}
+.menu{
+    display: flex;
+    justify-content: space-between;
+    font-size: 115%;
+}
+.menu a{
+    color: chocolate;
+    padding: 0 1vw;
+    transition: all .3s ease-in-out;
+}
+.menu a:hover{
+    opacity: 75;
+}
+.main-personalice{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 30vh;
+
+}
+
+/* upload con ajax */
+

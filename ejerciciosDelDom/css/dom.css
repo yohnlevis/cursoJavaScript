@@ -1,0 +1,345 @@
+
+
+/*estos estilos son para los menus de caja del html*/
+:root{
+  --main-font: sans-serif; 
+  --font-size:16px; 
+  --main-color: #e1f71ec7;
+  --second-color: #222;
+  --main-modal-color: rgba(247,222,30,0.85); 
+  --second-modal-color:rgba(34,34,34,0.85);
+  --container-width:1200px;
+}
+
+/*Se le cambian los valores por defecto del html*/
+html{
+    box-sizing: border-box;
+    font-family: var(--main-font);
+    font-size: var(--font-size);
+    /* este le da el ese efecto para salir las ventanas*/
+    scroll-behavior: smooth;
+}
+ 
+/* Todos los elementos de este documento herenden el box-sizing */
+*,
+*:before,
+*:after{
+    box-sizing: inherit;
+}
+/*el body por defecto tiene un pequeño margin de 8px y aca se va a resetear a cero*/
+body{
+    margin: 0;
+    /*con esto todo lo que se desborde en horizontal se oculte y no genere la barra de desplazamiento*/
+    overflow: hidden;
+}
+/*si se utilizan imagenes se van a adaptar a la maxima anchura del contenedor*/
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+/*ESTOS ESTILOS YA SON PARA menu-hamburguesa*/
+
+.header{
+    /* el position: sticky cuando el header llegue a la posicion de cero en el margen se va a comportar como si estuviese fija */
+    position: sticky;
+    z-index:997 ;
+    top: 0;
+    padding: 1rem;
+    background-color: var(--main-color);
+    color:var(--second-color)
+}
+/*tambien se van a cambiar los valores por defecto del h1*/
+.header h1{
+    margin: 0 auto;
+    text-align: center;
+}
+
+/*a las etiquetas seccion que estan en el html se les va a cambiar los valores*/
+.section{
+    padding: 2rem;
+    padding-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100;
+    max-width: var(--container-width);
+    min-height: 100vh;
+    text-align: center;
+}
+
+.panel {
+    position:fixed;
+    /*se coloca un numero menos que el boton para que no qude sobre el mismo*/
+    z-index: 998;
+    border: hotpink;
+    /*se coloca valores en cero para que el panel llegue hasta los maximos de las margenes, es como si se estirara en todas las direcciones*/
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    /* con esto le da el scroll al panel para el contenido que desborda */
+    overflow-y: auto;
+    background-color: var(--second-modal-color);
+    /*este dice de donce sale el panel, si de arriba de abajo etc*/
+    transition: transform 0.3s ease;
+    /*De arriba*/
+    /*  transform: translate(0,-100%); */
+    /*De abajo*/
+    /* transform: translate(0,100%); */
+    /*de izquierda a derecha*/
+    transform: translate(-100%,0);
+
+}
+
+/*esta es la clase que se agrega o se le quita al panel*/
+.panel.is-active{
+    transform: translate(0,0);
+}
+
+.panel-btn{
+    /* esta cambia la posicion del boton*/
+    position: fixed;
+    /*dondale un valor alto de 999 se evita que el contenido que vaya saliendo nuevo se muestre encima del boton*/
+    z-index: 999;
+    bottom: 1vh;
+    right: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+
+}
+
+.menu{
+    /*aca se le dice que menu herede la anchura de su contenedor*/
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    /*trabaja sobre y*/
+    justify-content: space-evenly;
+    /*trabaja sobre x*/
+    align-items: center;
+    text-align: center;
+}
+
+.menu a{
+    padding-top: 2rem;
+    /*heredando del menu*/
+    width: inherit;
+    display: block;
+    /*aumenta un poco el tamaño de letra*/
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--main-color);
+    transition: all 0.4 ease;
+}
+
+/*estilos para la seudoclase hover del enlace */
+.menu a:hover{
+    font-weight: bold;
+    /*se invierten los colores*/
+    color: var(--second-color); 
+    background-color: var(--main-modal-color);
+}
+
+.dark-theme-btn{
+  position: fixed; 
+  z-index: 999; 
+  bottom: 1vh;
+  left: 1vw;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: var(--main-color);
+  color: var(--second-color);
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  transition: all 0.3s ease-out;
+}
+.dark-theme-btn:hover{
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+.dark-mode{
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+/*  Estado de la red */
+
+.online,
+.offline{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: teal;
+    color: #fff;
+}
+.offline{
+    background-color: #b71c1c;
+}
+
+
+/* Sider responsivo */
+
+.slider{
+    position: relative;
+    width: 80%;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.slider-slides{
+   position: relative;
+    height: 400px;
+    
+}
+.slider-slide{
+    position: absolute;
+    top:0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    transition: opacity 1s ease;
+
+}
+/* le vamos a decir a las imagenes que esten dentro de .slider-slide, la altura la herede
+la altura y el ancho, luego con object-fit:cover; se alinea respecto a su contenedor
+de arriba y abajo y para terminar se alinea con object-position siendo cada numero
+X y Y respectivamente */ 
+.slider-slide img{
+height: inherit;
+width: inherit;
+object-fit: cover;
+object-position: 50% 50%;
+}
+
+/* este es uno de los primeros div que esta marcado con active */
+.slider-slide.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.slider-btns{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    /* con esta propiedad los coloca en linea */
+    display: flex;
+    justify-content: space-between;
+    font-size: 5rem;
+    font-weight: bold;
+    
+}
+
+.slider a{
+   display: block;
+   width: 6rem;
+   height: 6rem;
+   border-radius: 50%;
+   border: thin solid #000;
+   text-decoration: none;
+   background-color: #fff;
+   color: #000;
+   transition: all 0.3 ease;
+}
+/* cuando el estado esta en hover cambiara de color */
+.slider a:hover{
+    color: #4d4d4d;
+}
+
+/* De aca sigue la  validacion del formulario.  */
+
+.contact-form{
+   padding: 0.5rem;
+   margin: 1 rem auto;
+   display: block;
+   width: 100%;
+}
+
+.contact-form >*{
+    padding: 0.5rem;
+    margin: 1rem auto;
+    display: block;
+    width: 90%;
+}
+.contact-form legend,
+.contact-form-reponse{
+font-size: 1.5rem;
+font-weight: bold;
+text-align: center;
+}
+.contact-form input, 
+.contact-form textarea{
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.contact-form input[type="submit"]{
+    width: 50%;
+    /* queda en negrita el texto dentro del boton */
+    font-weight: bold;
+    /* aparece la manito */
+    cursor: pointer;
+}
+    
+.contact-form * ::placeholder{
+    color: var(#000);
+}
+.contact-form [required]:valid{
+   border: thin solid 	#008000 ;
+}
+
+.contact-form [required]:invalid{
+    border: thin solid 	#e20909ea ;
+ }
+
+/* aca ya es para validar el formulario pero adicionando javaScript */
+
+.contact-form-error{
+   /*  esta hace que este super pegado al div anterior */
+    margin-top: -1rem;
+    font-size: 80%;
+    background-color:#e20909ea ;
+    color: #fff;
+    transition: all 800ms ease;
+}
+/* con javaScript la clase anterior va a estar inactiva y luego se identifica que esta 
+activa y se muesta con la clase siguiente: */ 
+.contact-form-error.is-active{
+    display: block;
+    animation: show-message 1s 1 normal 0s ease-out both;
+}
+.none{
+    display: none;
+}
+
+@keyframes show-message{
+    0%{
+        visibility:hidden; 
+        opacity: 0;
+    }
+    
+100%{
+  visibility: visible;
+  opacity: 1;  
+}
+
+
+}

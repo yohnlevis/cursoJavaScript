@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <title>Ejercicios</title>
+</head>
+<body>
+ <h1>Ejericios, en total 10</h1>
+<script>
+console.log("ESTOS SON MIS EJERCICIOS"); 
+ 
+
+//Primer ejercicio
+
+/*
+function contarCadena(cadena){
+ if (typeof(cadena)=="string"){
+    return console.log(`La cadena tiene este numero de caracteres ${cadena.length}`); 
+ }else {
+    console.log( `No se puede contar el Strin porque es un tipo de dato ${typeof(cadena)}`)
+ }   
+  
+}
+contarCadena("hola como estas"); */
+
+
+//Primer ejercicio utilizando arrow function. 
+//como no tiene llaves tiene el return implicito, si se requieren realizar mas validaciones y colocar llaves se de utilizar el return
+/*
+const contarCadena = (cadena)=> (typeof(cadena)=="string") ? console.log(`Cantidad de digitos en cadena ${cadena.length}`): 
+console.log("El tipo de dato intresado no corresponde")
+contarCadena("hola"); */
+
+//Segundo ejercicio
+ /*
+function cortarCadena(cadena, numero){
+    if (typeof(cadena)=="string" && typeof(numero)=="number") {
+     return cadena.substr(0,numero);
+    }
+    else {
+    console.log( `No se puede contar el Strin porque es un tipo de dato ${typeof(cadena)}`)
+ }   
+}
+console.log(cortarCadena("Hola Mundo",4)); */
+
+//Segundo ejercicio con arrow function
+/*
+const cortarCadena = (cadena, numero) => (typeof(cadena)=="string" && typeof(numero)=="number") ? console.log(cadena.substr(0,numero)): 
+console.error(`los datos ingresados no son correctos la cadena esta en ${cadena} y el numero es un ${numero}`);
+cortarCadena("hola como estas",4)*/
+
+
+//Tercer ejercicio
+/*
+function separarCadena(cadena,caracter){
+    if (typeof(cadena)=="string") {
+         cadena.split(" ");
+         let patron = / /gi;
+          nuevaCadena =  cadena.replace(patron,`${caracter}`);
+          return nuevaCadena;
+    }
+    else {
+    console.log( `No se puede contar el Strin porque es un tipo de dato ${typeof(cadena)}`)
+ }   
+}
+console.log(separarCadena("hola como estas de bien", `""`)); */
+
+
+//Cuarto ejercicio
+/*
+function repetirTexto(texto,numeroVeces){
+    for(let i=0; i<numeroVeces;i++){
+        console.log(texto);
+    }
+}
+repetirTexto("hola como te va",6); */
+
+//Cuarto ejercicio con arrow function 
+/*
+const repetirTexto = (texto, numeroVeces)=> {
+    if (typeof(texto)=="string"  && typeof(numeroVeces)=="number"){
+        for (let i=0;i<numeroVeces;i++){
+            console.log(texto);
+        }
+    }
+    else {
+        console.error(`debes ingresar un valor valido ya que el texto esta en ${typeof(texto)} y el numero esta en ${typeof(numeroVeces)}`);
+    }
+};
+
+repetirTexto("hola como estas",5); */
+ 
+
+//Quinto ejercicio
+/*
+const invertirTexto = (texto) =>{
+    if(!texto){
+        console.log("Debes ingresar un string");
+    }
+    else {
+        let acumulador="";
+    for(let i=texto.length; i>=0; i--){
+        acumulador+= texto.charAt(i);
+    }
+     console.log(acumulador);
+      
+    }
+}
+invertirTexto("hola como estas"); */
+
+
+/*
+//Sexto ejercicio
+const buscarPalabra= (texto,palabra)=>{
+    let uno= texto.split(" ");
+        contador = 0;
+      uno.forEach((element, index) => {
+      
+        if (element==palabra){
+           contador ++;
+        }
+      }
+      );
+      if (contador>0){
+            return console.log(`La palabra (${palabra}) se repite ${contador} veces`)
+      }
+      else console.log(`La palabra =  (${palabra}) no esta en el texto`)
+    }
+buscarPalabra("hola como estas estas","estas") */
+
+//Septimo ejercicio
+/*
+const palindromo = (texto) =>{
+    if(!texto){
+        console.log("Debes ingresar un string");
+    }
+    else {
+      texto=   texto.toUpperCase();
+        let acumulador="";
+    for(let i=texto.length; i>=0; i--){
+        acumulador+= texto.charAt(i);
+    }
+     if(texto==acumulador){
+        console.log(`La palabra ${texto} es un palindromo`);
+     }
+     else {
+         console.log(`La palabra ${texto} no es palindromo`);
+     } 
+    }
+}
+palindromo("Abalaba"); */
+
+//Octavo ejercicio
+
+/*
+const eliminarPatron = (cadena, reemplazar) => {
+    if (typeof(cadena)=="string") {
+         
+         let patronn = new RegExp(`${reemplazar}`,`gi`);
+     
+          nuevaCadena =  cadena.replace(patronn,``);
+          return console.log(nuevaCadena) ;
+    }
+    else {
+    console.log( `No se puede contar el Strin porque es un tipo de dato ${typeof(cadena)}`)
+ }    
+}
+ console.log(eliminarPatron("hola como estas hola",``));    */
+
+
+//Noveno ejercicio
+/*
+const obtenerAleatorio = () =>  {
+let ramdo = Math.random()   * (600- 501) + 501;
+console.log(Math.ceil(ramdo));
+}    
+obtenerAleatorio(); */
+
+
+
+//Decimo ejercicio
+/*
+const validarCapicua = (numero) => {
+    if(typeof(numero)=="number"){
+        numero = new String(numero);
+        let numeros = numero.split("");
+           comparar = numeros;
+          if (comparar.toString() ==  numeros.reverse().toString()){
+            console.log(`El numero ${numero} es capicua`);
+          } 
+          else {
+              console.error(`Lo siento el numero ${numero} no es capicua `)
+          }   
+    }
+    else {
+        console.error("debes ingresar un valor valido");
+    }
+}
+ validarCapicua(5005); */
+
+
+
+ //Onceavo ejercicio
+ 
+ /*
+const calcularFactorial = (numero) =>{
+   if (typeof(numero)=="number" && numero>0) {
+    let resultado= numero; 
+    for (let i=numero-1 ; i>0; i--){
+        resultado= resultado *i;    
+    }
+    console.log(resultado)
+}
+else {
+    console.warn(`Debes ingresar un valor valido porque lo que ingresaste es un ${numero}`);
+}
+}
+calcularFactorial(6); */
+
+
+//Doceavo ajercicio
+/*
+const determinarPrimo = (numero) => {
+    if (typeof(numero)=="number" && numero >1) {    
+      let contador = false; 
+    for (let i=2; i<numero; i ++){
+      if (numero%i==0) contador=true; 
+      break;
+    }
+    if (contador==false)  console.log(`El numero ${numero} si es primo`);
+    else console.error(`El numero ${numero} no es primo`);
+}
+else {
+    console.warn(`Debes ingresar un valor valido, tu ingresaste ${numero} `)
+}
+}
+determinarPrimo(97); */
+
+
+
+//Treceavo ejercicio
+/*
+const determinarParImpar= (numero) => {
+typeof(numero)== "number" && numero > 0 ? numero%2==0? console.log(`El numero ${numero} es par`): console.log(`El numero ${numero} no es par`): 
+console.log("Debes ingresar un numero valido")
+}
+
+determinarParImpar(69); */
+
+
+
+//Catorceavo ejercicio. 
+
+/*
+const convertirCelsiusFahrenhit = (valor,tipo)=>{
+  typeof(valor)=="number" && typeof(tipo)=="string"? 
+  tipo.toUpperCase()=="C"?  
+  console.log(`Tus ${valor} Grados Celsius equivalen a  ${( valor * 9/5)+ 32} grados Fahrenheit`):
+  tipo.toUpperCase()=="F" ?   console.log(`Tus ${valor} Grados Fahrenheit equivalen a  ${( valor -32 ) * 5/9} grados Celsius`):
+  console.log("La letra ingresada no corresponde"+ tipo): console.log(`Debes ingresar un valor valido`);
+}
+convertirCelsiusFahrenhit(0,"c"); */
+
+
+ //Quinceavo ejercicio
+/*
+ const convertirBinarioDecimalyVS = (numero,base)=>{
+     if (typeof(numero)=="number" && typeof(base)=="number") {
+     if(base===10){
+      let acumular="";
+      while (numero>=2){
+         acumular = acumular + numero%2; 
+        numero = Math.floor(numero/2) ;
+      }
+   let patron = /,/gi;
+   acumular = (acumular+numero).split("").reverse().join().replace(patron,"");
+   console.log( `El binario del numero que ingresaste es:  ${acumular}`);
+}
+else if(base===2){
+    let patron = /[2-9]/gi;
+    if (!patron.test(numero)){
+ let arrayTexto =    numero.toString().split("");
+     potencia =0; 
+     acumulador = 0;
+    for (let i=arrayTexto.length-1; i>=0; i--){
+         acumulador =  acumulador +  Math.pow((arrayTexto[i]*2), potencia) 
+         potencia++;    
+    }
+    console.log( `El decimal del binario que ingresaste es ${acumulador}`);
+}
+else console.warn(`Debes ingresar una secuencia de ceros y unos para que funcione`);
+}
+}
+else console.error("Debes ingresar valores aceptados en los campos")
+}
+ convertirBinarioDecimalyVS(1111101,2) */
+
+
+
+ //Ejercicio 16 
+/*
+const aplicarDescuento = (valor,descuento) => {
+    if (typeof(valor)=="number" && typeof(descuento)=="number"){
+        let valorUno= (valor*descuento) /100;
+        valor = valor-valorUno;
+        return console.log(`Si le sacas el ${descuento}% te queda ${valor}`)
+    }
+    else {
+        console.log("Debes ingresar un valor aceptado por la aplicacion")
+    }
+}
+aplicarDescuento(800,15) */ 
+
+
+
+//Ejercicio 17 
+/*
+const sumarFechas = (anio,mes,dia)=>{
+    let fechaIngresada = new Date(`${mes} ${dia}, ${anio} 00:1:00`);
+        fechaAnios= new Date();  
+       fechaActual = new Date(`${mes} ${dia}, ${fechaAnios.getFullYear()} 00:1:00`)
+     fechaMeses= new Date ();
+     fechaMeses = fechaActual.getMonth()-fechaMeses.getMonth();
+     fechaDias= new Date();
+     console.log( `Han pasado ${(fechaAnios.getFullYear()- fechaIngresada.getFullYear()-1)} años, ${11-fechaMeses} meses y ${11-fechaMeses} dias  hasta la fecha acual` )
+    }
+
+      sumarFechas(1988,06,25);
+     */
+
+     //Ejercicio 18 
+
+/*
+ const contarVocalesConsonantes= (texto) =>{
+     let patron = /a|e|i|o|u/i;
+
+     contador =0;
+     while (patron.test(texto)){
+    let dos =   texto.replace(patron,"l"); 
+       texto= dos;
+       contador ++;
+     } 
+     let patronDos= / /gi;
+     dos = texto.replace(patronDos,"");
+     console.log(`El texto tiene ${contador} vocales y ${dos.length- contador} consonantes`)   
+ 
+ }
+
+contarVocalesConsonantes("koHA")*/
+
+
+//Ejercicio 19
+//validar el nombre. 
+/*
+const validarNombre =(nombre)=>{
+  if (typeof(nombre)=="string"){
+      //con el \s valido que si permita espacios ^ con este dice no puede haber nada antes de.. y el $ no puede haber 
+      //nada despues de... y el + lo evalua por cada caracter del texto , 
+      let patron = /^[A-Za-zÑñáÁ\s]+$/g.test(nombre);
+return (patron) ? console.log("tu nombre es valido"): 
+console.log("Tu nombre no es valido");
+
+  }
+}
+validarNombre("yohn levis"); */
+
+//Ejercicio 20
+/*
+const validarCorreo =(correo)=>{
+  if (typeof(correo)=="string"){ 
+      let patron = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(correo);
+return (patron) ? console.log("tu correo es valido"): 
+console.log("Tu correo no es valido");
+  }
+}
+validarCorreo("hola@gmail.com")*/
+
+//Ejercicio 21 
+/*
+const elevarCuadradoArrelgo = (arreglo) =>{
+
+    if (typeof(arreglo)=="string"){
+    let arregloDos = [arreglo.split(",").length];
+    let contador =0;
+ arreglo.split(",").forEach ( function (atributo, index){
+     arregloDos [contador]= atributo*atributo;  
+   contador++;
+   })
+  console.log(arregloDos);
+}
+else {
+    console.log("Debes ingresar un valor valido")
+}
+}
+
+elevarCuadradoArrelgo("5,6,7,7"); */console
+
+//otra forma de resolver el ejercicio 21
+/*
+const elevarCuadradoArrelgo = (arr= undefined) =>{
+    if (arr=== undefined) return console.warn("No ingresaste un arreglo");
+    if (!arr instanceof Array) return console.log("debes ingresar un arreglo");
+    if (arr.length===0) return console.log("El arreglo esta vacio");
+     
+    //Como los arreglos son iterables se pueden recorrer con un for of
+    for (let num of arr){
+        if(typeof(num)!="number") return console.log("El valor ingresado no es un numero");
+
+    }
+    //la funcion .map permite cambiar un arreglo por otro recibiendo un parametro
+    //para este caso el y lo cambia en la misma posicion por el valor de la funcion
+    const arregloNuevo = arr.map(el =>el*el);
+    return console.log(arregloNuevo);
+}
+elevarCuadradoArrelgo([4,3]); */
+
+
+
+
+//Ejercicio 22
+
+/*
+const devolverNumAltoBajo= (arr= undefined)=>{
+    if (arr=== undefined) return console.warn("No ingresaste un arreglo");
+    if (!arr instanceof Array) return console.log("debes ingresar un arreglo");
+    if (arr.length===0) return console.log("El arreglo esta vacio"); 
+       let mayor=0;
+       let menor=arr[0];
+  for  (let num of arr){
+      if (mayor<num){
+          mayor=num;     
+      }
+      if (menor>num){
+          menor = num; 
+      }
+     
+  }
+  console.log(`el numero mayor es ${mayor} y el numero menor es ${menor}`)
+
+}
+ 
+devolverNumAltoBajo([3,4,8,-3]); */
+  
+
+
+
+//Ejercicio 23
+/*
+const devolverParesImpares =(arr= undefined)=>{
+    if (arr=== undefined) return console.warn("No ingresaste un arreglo");
+    if (!arr instanceof Array) return console.log("debes ingresar un arreglo");
+    if (arr.length===0) return console.log("El arreglo esta vacio");
+       let impares = [];
+           pares = [];
+    for  (let num of arr) {
+        (num%2===0) ? pares.push(num): impares.push(num); 
+    }  
+   console.log(`numeros pares ${pares} y numeros impares ${impares}`) 
+}
+devolverParesImpares([4,5,6,7]); */
+
+
+
+//Ejercicio 24
+/*
+const ordenarArreglos = (arr= undefined) =>{
+    if (arr=== undefined) return console.warn("No ingresaste un arreglo");
+    if (!arr instanceof Array) return console.log("debes ingresar un arreglo");
+    if (arr.length===0) return console.log("El arreglo esta vacio");
+     
+    //Como los arreglos son iterables se pueden recorrer con un for of
+    for (let num of arr){
+        if(typeof(num)!="number") return console.log("El valor ingresado no es un numero");
+
+    }
+console.log( `Arreglo ordenado de menor a mayor ${arr.sort()} y oredenado de mayor a menor ${arr.sort().reverse()}`);
+
+}
+ordenarArreglos([7,8,9,5,2,1,6,5]); */
+
+
+
+
+
+//Ejercicio 25
+/*
+const eliminarRepetidos = (arr= undefined) =>{
+    if (arr=== undefined) return console.warn("No ingresaste un arreglo");
+    if (!arr instanceof Array) return console.log("debes ingresar un arreglo");
+    if (arr.length<=1) return console.log("El arreglo debe tener mas de un caracter"); 
+    let unicoArreglo= arr.filter((value, index, arregloOriginal)=> arregloOriginal.indexOf(value)===index);
+    console.log(unicoArreglo);
+
+}
+eliminarRepetidos([4,6,7,3,9,9,"u","u"]); */
+
+
+
+//Ejercicio 26
+/*
+const promediarArreglo = (arr= undefined)=>{
+    if (arr=== undefined) return console.warn("No ingresaste un arreglo");
+    if (!arr instanceof Array) return console.log("debes ingresar un arreglo");
+    if (arr.length<=1) return console.log("El arreglo debe tener mas de un caracter");    
+    for (let num of arr){
+        if(typeof(num)!="number") return console.log("El valor ingresado no es un numero");
+    }
+     return console.info(
+         arr.reduce((total,num,index,arr) =>{
+             total +=num;
+             if (index === arr.length -1 ){
+                 return `El promedio de ${arr.join(" +")} es ${total/arr.length}`
+             }
+             else {
+                 return total;
+             }
+         })
+     )
+}
+promediarArreglo([4,6,7,8]); */
+
+
+
+
+//Ejercicio 27.
+
+  /*Programa una clase llamada Pelicula.
+  La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+  - Todos los datos del objeto son obligatorios.
+  - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+     7 restantes números.
+  - Valida que el título no rebase los 100 caracteres.
+  - Valida que el director no rebase los 50 caracteres.
+  - Valida que el año de estreno sea un número entero de 4 dígitos.
+  - Valida que el país o paises sea introducidos en forma de arreglo.
+  - Valida que los géneros sean introducidos en forma de arreglo.
+  - Valida que los géneros introducidos esten dentro de los géneros 
+     aceptados*.
+  - Crea un método estático que devuelva los géneros aceptados*.
+  - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+    decimal de una posición.
+  - Crea un método que devuelva toda la ficha técnica de la película.
+  - Apartir de un arreglo con la información de 3 películas genera 3 
+    instancias de la clase de forma automatizada e imprime la ficha técnica 
+    de cada película.
+
+* Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+
+          */
+
+class Pelicula{
+    //Se envian los datos en forma destructurada para que nasca cada pelicula
+    constructor({ id, titulo, director, estreno, paises, generos,calificacion }){
+        this.id=id;
+        this.titulo=titulo;
+        this.director=director;
+        this.estreno= estreno;
+        this.paises= paises;
+        this.generos=generos; 
+        this.calificacion=calificacion;
+        this.validarIMDB(id);
+        this.validarTitulo(titulo);
+        this.validarDirector(director);
+        this.validarEstreno(estreno);
+        this.validarPais(paises);
+        this.validarGeneros(generos);
+        this.validarCalificacion(calificacion);
+        
+    }
+
+    //Como es un metodo get se maneja como atributo de la clase. 
+    static get listadoGeneros(){
+      return ["Action","Adult","Adventure","Animation","Biography","Comedy","Crime","Documentary","Drama","Family","Fantasy","Film",
+       "Noir","Game-Show","History","Horror","Musical","Music","Mystery","News","Reality-TV","Romance","Sci-Fi","Short","Sport","Talk-Show","Thriller","War","Western"]; 
+    }
+    
+    static generosAceptados(){
+        return console.info(`Los generos aceptados son : ${Pelicula.listadoGeneros.join(", ")}`);
+    }
+
+
+    //este es un metodo generico que no nace con el objeto
+    validarCadenas(propiedad,valor){
+    if (!valor) return console.warn(`${propiedad} ${valor} esta vacio`);
+    if (typeof(!valor)=="string") return console.error(`${propiedad} ${valor} ingresado, No es una cadena de texto`);
+
+    return true;   
+    }
+
+    validarLongitudCadena(propiedad, valor, longitud){
+        if (valor.length>longitud) return console.error(`${propiedad} ${valor} excede el numero de caracteres permitidos`);
+        return true; 
+    }
+    
+    validarNumero(propiedad, valor){
+        if(!valor) return console.warn(`${propiedad} ${valor} esta vacio`);
+        if (typeof(valor)!=="number") return console.error(` el ${propiedad} ${valor} ingresado no es un numero`)
+       
+        return true;
+    }
+
+    validarArreglo(propiedad,valor){
+        if (valor=== undefined) return console.warn("No ingresaste un arreglo");
+    if (!valor instanceof Array) return console.log("debes ingresar un arreglo");
+    if (valor.length===0) return console.log("El arreglo esta vacio");
+     
+    //Como los arreglos son iterables se pueden recorrer con un for of
+    for (let num of valor){
+        if(typeof(num)!=="string") return console.error("El valor ingresado no es una cadena de texto");
+
+    }
+    return true; 
+    }
+    validarIMDB(id){
+      if (this.validarCadenas("IMBD id",id)){
+        //^esto significa que no puede haber nada antes de... $ esto significa que no puede haber nada despues de..
+        //([a-z]){2} aca dice que acepta caracteres de la a - z y solo acepta dos
+        //y se esta negando porque se requiere es cuando el id no cumpla con esto  
+       
+        if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){
+            return console.error(`IMDB id ${id} no es valido, debe tener 9 caracteres, las 2 primeras letras minusculas los 7 restantes nunmeros`);
+        }
+        
+    }
+
+    }
+
+
+    validarTitulo(titulo){
+    if (this.validarCadenas("Titulo",titulo))
+       this.validarLongitudCadena("Titulo",titulo,100)
+    }
+   
+    validarDirector(director){
+    if (this.validarCadenas("Director",director))
+       this.validarLongitudCadena("Director",director,50)
+    }
+
+    validarEstreno(estreno){
+    if (this.validarNumero("Año de estreno",estreno)){
+        //^esto significa que no puede haber nada antes de... $ esto significa que no puede haber nada despues de..
+        //([a-z]){2} aca dice que acepta caracteres de la a - z y solo acepta dos
+        //y se esta negando porque se requiere es cuando el id no cumpla con esto  
+        if(!(/^([0-9]){4}$/.test(estreno))){
+            return console.error(`El año ${estreno} debe ser numero de cuatro digitos`);
+        }
+    }
+    }
+    validarPais(paises){
+        this.validarArreglo("Pais", paises);
+    }
+
+    validarGeneros(genero){
+     if (this.validarArreglo("Generos",genero)){
+         //aca se hace el recorrido del arreglo que el usuario ingresa y no de los que se tienen en la clase como permitidos
+         for(let gener of genero){
+             console.log(gener,Pelicula.listadoGeneros.includes(gener));
+             if (!Pelicula.listadoGeneros.includes(gener)){
+                 console.error(`Genero incorrecto ${genero.join(", ")}`);
+                 Pelicula.generosAceptados();
+             }
+         }
+     }
+          
+    }
+
+    validarCalificacion(calificacion){
+    if (this.validarNumero("Calificion",calificacion)){
+
+      return (calificacion < 0 || calificacion > 10)
+     
+      ?console.error(`La calificacion tiene que estar en un rango entre 0 y 10 `):
+
+      this.calificacion= calificacion.toFixed(1);
+    }
+    }
+
+    validarCalificacionn(calificacion){
+        if (this.validarNumero("Calificacion", calificacion)){
+
+        }
+    }
+
+
+   verFichaTecnica(){
+       console.log(`FICHA TECNICA: \n Id: ${this.id} \n Titulo: ${this.titulo}
+ Director: ${this.director} \n Estreno: ${this.estreno} \n Paises: ${this.paises.join(", ")}
+ Generos: ${this.generos} \n Calificacion: ${this.calificacion}`)
+     
+   }
+}
+  
+const peli = new Pelicula({
+    id:"hh6769876",
+    titulo:"hola",
+    director:"Levis",
+    estreno:1995,
+    paises:["colombia","Uruguay"],
+    generos: ["Action", "Comedy"],
+    calificacion:9.0
+
+})
+peli.verFichaTecnica();
+
+//Generar tres instancias de pelicula de forma automatizada. 
+
+const misPeliculas= [
+    {
+    id:"hh6769756",
+    titulo:"Primera Pelicula",
+    director:"Levis",
+    estreno:1995,
+    paises:["colombia","Uruguay"],
+    generos: ["Action", "Comedy"],
+    calificacion:9.0  
+    },
+    {
+        id:"hh6769576",
+    titulo:"Segunda Pelicula",
+    director:"Levis",
+    estreno:1995,
+    paises:["colombia","Uruguay"],
+    generos: ["Action", "Comedy"],
+    calificacion:9.0
+    },
+    {
+    id:"hh6769021",
+    titulo:"Tercera Pelicula",
+    director:"Levis",
+    estreno:1995,
+    paises:["colombia","Uruguay"],
+    generos: ["Action", "Comedy"],
+    calificacion:9.0
+    }
+];
+
+ misPeliculas.forEach(elemento => new Pelicula(elemento).verFichaTecnica());
+
+
+</script>
+</body>
+</html>

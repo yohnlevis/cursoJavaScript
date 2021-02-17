@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <title>Asincronia javaScript</title>
+</head>
+<body>
+<script>
+    /*
+    console.log("inicio");
+    setTimeout(()=>{
+         console.log("Ejecutando un setTimeOut, esto se ejecuta solo una vez ")
+    },3000);
+
+    let temporizador= setTimeout(()=>{
+        console.log("esta no se imprime porque esta cancelando con clearTimeout")
+    },1000);
+   
+    //Para que cancele el setTimeOut se debe almacenar en una variable, 
+    //para este caso quedo en la varible temporizador 
+    clearTimeout(temporizador);
+  
+    //Si deseo parar el setInterval lo guardo en una variable y luego lo paro 
+    //con un clearInterval()
+    /* setInterval(()=>{
+        console.log("Ejecutando un setInterval, esto se ejecuta" +
+       " indefinidamente cada cierto intervalo de tiempo")
+    },2000);   */
+
+    //CALBACKS
+
+               //Primera explicacion 
+               //Esta la saque de otra fuente y ayuda para enterder el concepto
+/*
+ function main(callback){
+     let name= "Levissss";
+        console.log("soy el metodo main"); 
+        callback(name);
+
+    }
+
+    function segunda(nombre){
+        console.log(`Soy la segunda funcion llamada callback y este el parametro intresado ${nombre}`);
+    }
+
+  main(segunda);
+     
+              //segunda forma de hacerlo 
+
+/*
+function mainDos(callback){
+    console.log("Soy el segundo metodo mainDos ");
+   callback(); 
+}
+ 
+mainDos(function(){
+    console.log("Segunda callback del mainDos")
+})
+
+*/
+     /*  
+    function cuadradoCallback(valor, callback){
+         setTimeout(()=>{
+           callback(valor,valor*valor)
+           
+         },3000 | Math.random()*3000);
+    }  
+   //callback hell o la piramide del infierno
+ cuadradoCallback(1,(valor,resultado)=>{
+     console.log("Inicio callback");
+     console.log(`Aca se ejecuta el callback ${valor} y eleva al cuadrado = ${resultado}`);
+     cuadradoCallback(2,(valor,resultado)=>{
+     console.log(`Aca se ejecuta el callback ${valor} y eleva al cuadrado = ${resultado}`);
+     cuadradoCallback(3,(valor,resultado)=>{
+     console.log(`Aca se ejecuta el callback ${valor} y eleva al cuadrado = ${resultado}`);
+     cuadradoCallback(4,(valor,resultado)=>{
+     console.log(`Aca se ejecuta el callback ${valor} y eleva al cuadrado = ${resultado}`);
+ });
+ });
+ });
+});
+*/
+
+//PROMESAS
+
+
+/*
+let x = 12;
+
+const p = new Promise((resolve,reject)=>{
+    if (x===10){
+        resolve(`si es igual a diez`);
+    }else {
+        reject(`la variable no es igual a diez `);
+    }
+});
+
+
+p.then(res =>{
+    console.log(`Muy bien esta es la respuesta positivo  y el numero ${res}`)
+});
+
+p.catch(error => {
+    console.log(`Que mal ${error}`);
+}); */
+
+
+//Ejercicio sin promesas
+/*
+let x = 10; 
+
+ console.log(`1. Proceso iniciando...`)
+
+ setTimeout(() => {
+     x= x*3+2;
+     console.log(`2. proceso terminado`)
+ },0);
+
+console.log(`3. El resultado es: ${x}`)
+
+
+console.log(`1. Proceso iniciando...`)
+*/
+
+/* et x=10
+console.log(`1. Proceso iniciando...`)
+
+const promesa = new Promise((resolve, reject)=>{
+  
+    setTimeout(() => {
+     x= x*3+2;
+     console.log(`2. proceso terminado`)
+    resolve(x);
+ },0);
+})
+
+promesa.then(res =>{
+    console.log("3. este es el resultado"+res);
+}); 
+ */
+
+/* function cuadradoPromise(value){
+    return new Promise ((resolve, reject)=>{
+        if (typeof(value)!=="number") return reject(`y el valor ${typeof(value)} no corresponde`)
+        setTimeout(()=>{
+           resolve({
+               //como el nombre de la variable es el mismo nombre que lo que se le asigna se puede colocar solo uno. 
+               value, 
+               result: value* value
+           });
+        },0| Math.random()*1000)
+    });
+}
+
+ */
+/* cuadradoPromise(1).then(obj=>{
+    console.log(`Inicio promesa`); 
+    console.log(`Promesa ${obj.value} ${obj.result}`);
+    return cuadradoPromise(2);
+}).then(obj=>{
+    console.log(`Continua la promesa ${obj.value} ${obj.result}`);
+    return cuadradoPromise(3);
+}).then(obj =>{
+    console.log(`Continua la promesa ${obj.value} ${obj.result}`);
+    console.log("fin de la promesa");
+})
+
+.catch(err=>{
+     console.warn(`aca estoy llamando el error con el catch ${err}`)
+}) */
+
+
+     //FUNCIONES ASINCRONAS
+//Lo anterior a esto, es sincrona
+
+/* async function funcionAsincronaDeclarada(){
+  try{
+    console.log(`Inicio de funcion asincrona`);
+
+    //cada que se llama una funcion dentro de una funcion asincrona se debe colocar la palabra await para que espere la respuesta de esa funcion antes de seguir con el resto 
+    let obj= await cuadradoPromise(0);
+    console.log(`Aca se llamo a la funcion cuadradoPromise ${obj.value}, ${obj.result}`)
+    obj= await cuadradoPromise(1);
+    console.log(`segunda vez que se llama ${obj.value} , ${obj.result}`)
+    obj= await cuadradoPromise(2);
+    console.log(`Tercera vez que se llama ${obj.value} , ${obj.result}`)
+    obj= await cuadradoPromise(3);
+    console.log(`Cuarta vez que se llama ${obj.value} , ${obj.result}`)
+
+  }catch(err){
+     console.error(err);
+  }
+}
+ 
+funcionAsincronaDeclarada();
+
+
+//Funcion asincrona expresada
+
+const funcionAsincronaExpresada = async ()=>{
+
+    try{
+    console.log(`Inicio de funcion asincrona`);
+
+    //cada que se llama una funcion dentro de una funcion asincrona se debe colocar la palabra await para que espere la respuesta de esa funcion antes de seguir con el resto 
+    let obj= await cuadradoPromise(0);
+    console.log(`Aca se llamo a la funcion cuadradoPromise ${obj.value}, ${obj.result}`)
+    obj= await cuadradoPromise(4);
+    console.log(`segunda vez que se llama ${obj.value} , ${obj.result}`)
+    obj= await cuadradoPromise(5);
+    console.log(`Tercera vez que se llama ${obj.value} , ${obj.result}`)
+    obj= await cuadradoPromise(6);
+    console.log(`Cuarta vez que se llama ${obj.value} , ${obj.result}`)
+
+  }catch(err){
+     console.error(err);
+  }
+
+}
+
+funcionAsincronaExpresada(); */
+
+
+
+</script>
+</body>
+</html>
